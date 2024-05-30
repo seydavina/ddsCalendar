@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Routes pour afficher le formulaire, enregistrer un rendez-vous
+// et afficher le calendrier
+Route::get('/', [AppointmentController::class, 'index']);
+Route::get('/appointment/create', [AppointmentController::class, 'create']);
+Route::post('/appointment', [AppointmentController::class, 'store']);
